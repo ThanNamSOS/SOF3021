@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import SOF3021.beans.User;
+import SOF3021.entities.Account;
+import SOF3021.entities.User;
 
 @Controller
 @RequestMapping("/admin/users")
@@ -23,7 +24,7 @@ public class UserController {
 	@PostMapping("store")
 	public String store(
 			@Valid
-			@ModelAttribute("user") User user,
+			@ModelAttribute("accounts") Account accounts,
 			BindingResult result
 			) {
 		if(result.hasErrors() == true) {

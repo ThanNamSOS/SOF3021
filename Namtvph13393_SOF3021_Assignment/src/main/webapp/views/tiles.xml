@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+<tiles-definitions>  
+    <!-- Base Define -->
+    <definition name="base.definition"  
+        template="/views/layouts/classic.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="sidebar" value="/views/basefragments/sidebar.jsp" />  
+        <put-attribute name="header" value="/views/basefragments/header.jsp" />  
+        <put-attribute name="menu" value="/views/basefragments/menu.jsp" />  
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/views/basefragments/footer.jsp" />  
+    </definition>  
+
+    <!-- Account  -->
+     <definition name="admin/accounts/index" extends="base.definition">  
+        <put-attribute name="title" value="Index Account" />  
+        <put-attribute name="body" value="/views/admin/accounts/index.jsp" />  
+    </definition>
+    
+    <definition name="admin/accounts/listAccounts" extends="base.definition">  
+        <put-attribute name="title" value="List Account" />  
+        <put-attribute name="body" value="/views/admin/accounts/listAccounts.jsp" />  
+    </definition>  
+    
+     <definition name="admin/accounts/edit/*" extends="base.definition">  
+        <put-attribute name="title" value="Edit Account" />  
+        <put-attribute name="body" value="/views/admin/accounts/edit.jsp" />  
+    </definition>  
+    
+    <definition name="admin/accounts/create" extends="base.definition">  
+        <put-attribute name="title" value="Create Account" />  
+        <put-attribute name="body" value="/views/admin/accounts/create.jsp" />  
+    </definition> 
+    
+   <!--category  -->
+   
+    <definition name="admin/category/listCategory" extends="base.definition">  
+        <put-attribute name="title" value="LIST CATEGORY" />  
+        <put-attribute name="body" value="/views/admin/category/listCategory.jsp" />  
+    </definition> 
+    
+     <definition name="admin/category/create" extends="base.definition">  
+        <put-attribute name="title" value="LIST CATEGORY" />  
+        <put-attribute name="body" value="/views/admin/category/create.jsp" />  
+    </definition> 
+</tiles-definitions> 
