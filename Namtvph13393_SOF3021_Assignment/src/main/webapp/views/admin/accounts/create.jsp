@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>IT16309 - Create Account</title>
 </head>
 <body>
 	<form:form method="POST"
@@ -33,7 +32,7 @@
 		</div>
 		<div>
 			<label>Admin</label>
-			<form:select path="fullname">
+			<form:select path="admin">
 				<form:option value="0">Member</form:option>
 				<form:option value="1">Admin</form:option>
 			</form:select>

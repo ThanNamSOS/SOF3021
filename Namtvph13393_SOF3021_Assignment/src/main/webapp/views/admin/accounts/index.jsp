@@ -10,6 +10,11 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
+<div class="row">
+
+<a href="/namtvph13393/admin/accounts/create" class="btn btn-dark btn-lg"
+ role="button" >CREATE</a>
+</div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -31,8 +36,8 @@
 					<td>${acc.fullname }</td>
 					<td>${acc.email }</td>
 					<td>${acc.photo }</td>
-					<td>${acc.activated == 0? "In-active" : "active" }</td>
-					<td>${acc.admin == 1? "Admin" : "Member"}</td>
+					<td>${acc.activated == 0 ? "In-active" : "active" }</td>
+					<td>${acc.admin == 1 ? "Admin" : "Member"}</td>
 					<td><a href="/namtvph13393/admin/accounts/edit/${acc.id }"
 						class="btn btn-primary">Update</a> <a 
 						

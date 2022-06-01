@@ -26,13 +26,6 @@ public class AccountController {
 	@Autowired
 	private AccountRepository accountRepository;
 
-	@GetMapping("list")
-	private String getAll(Model model) {
-		List<Account> listAcc = this.accountRepository.findAll();
-		model.addAttribute("listAcc", listAcc);
-		return "admin/accounts/listAccounts";
-	}
-
 	@GetMapping("create")
 	public String create(@ModelAttribute("account") AccountModel account) {
 		return "admin/accounts/create";
@@ -89,4 +82,25 @@ public class AccountController {
 		model.addAttribute("data", p);
 		return "admin/accounts/index";
 	}
+	
+	
+	@GetMapping("formLogin")
+	public String form(@ModelAttribute("account") AccountModel account) {
+		return "admin/accounts/login";
+	}
+	
+	@PostMapping("login")
+	public String login(AccountModel account) {
+		String email = account.getEmail();
+		String pass = account.getPassword();
+		List<Account> accounts = this.accountRepository.findAll();
+		for (Account acc : accounts) {
+			if(email.equals(acc.getEmail()) && pass.equals(acc.getPassword())) {
+				System.out.println("Thanh cong");
+				return "redirect:/admin/product/home";
+			}
+		}
+		return "admin/accounts/login";
+	}
+	
 }
