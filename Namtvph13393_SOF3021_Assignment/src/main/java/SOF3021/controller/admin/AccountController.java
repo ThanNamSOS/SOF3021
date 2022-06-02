@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,9 @@ import SOF3021.repository.AccountRepository;
 @Controller
 @RequestMapping("/admin/accounts")
 public class AccountController {
-
+	
+	private Account account;
+	
 	@Autowired
 	private AccountRepository accountRepository;
 
@@ -58,9 +61,9 @@ public class AccountController {
 	}
 
 	@PostMapping("update")
-	public String update( AccountModel model) {
+	public String update(AccountModel model) {
 		Account account = new Account();
-		
+
 		account.setId(model.getId());
 		account.setActivated(model.getActivated());
 		account.setAdmin(model.getAdmin());
@@ -82,25 +85,24 @@ public class AccountController {
 		model.addAttribute("data", p);
 		return "admin/accounts/index";
 	}
-	
-	
+
 	@GetMapping("formLogin")
 	public String form(@ModelAttribute("account") AccountModel account) {
 		return "admin/accounts/login";
 	}
-	
+
 	@PostMapping("login")
-	public String login(AccountModel account) {
-		String email = account.getEmail();
+	public String login(AccountModel account,Model model) {
+		String username = account.getUsername();
 		String pass = account.getPassword();
-		List<Account> accounts = this.accountRepository.findAll();
-		for (Account acc : accounts) {
-			if(email.equals(acc.getEmail()) && pass.equals(acc.getPassword())) {
-				System.out.println("Thanh cong");
-				return "redirect:/admin/product/home";
-			}
+		Account acc = this.accountRepository.findByUsername(username);
+		System.out.println(acc.getUsername() + acc.getPassword() );
+		if(pass.equalsIgnoreCase(acc.getPassword())){
+			return "redirect:/admin/accounts/index";
+		}else {
+			model.addAttribute("message", "mật khẩu sai");
+			return "admin/accounts/formLogin";
 		}
-		return "admin/accounts/login";
 	}
-	
+
 }

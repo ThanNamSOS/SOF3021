@@ -10,12 +10,12 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
+		<p class="alert alert warning">${ message }</p>
 	<form:form method="POST" action="/namtvph13393/admin/accounts/login"
 		modelAttribute="account">
-		<!-- Email input -->
 		<div class="form-outline mb-4">
-			<form:input type="email" class="form-control" path="email" />
-			<label class="form-label" for="form2Example1">Email address</label>
+			<form:input type="text" class="form-control" path="username" />
+			<label class="form-label" for="form2Example1">Username</label>
 		</div>
 
 		<!-- Password input -->

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form:form method="POST" action="/namtvph13393/admin/product/store"
-		modelAttribute="productModel">
+		modelAttribute="productModel" >
 		<div>
 			<label>name</label>
 			<form:input path="name" />
@@ -21,9 +21,9 @@
 
 		<div>
 			<label>Category</label>
-			<form:select path="category" id="selected_company">
+			<form:select  path="category" id="selected_company">
 				<c:forEach items="${ categorys }" var="category">
-					<form:option value="${ category.id }">${ category.name }</form:option>
+					<form:option value="${ category }">${ category.name }</form:option>
 				</c:forEach>
 			</form:select>
 		</div>

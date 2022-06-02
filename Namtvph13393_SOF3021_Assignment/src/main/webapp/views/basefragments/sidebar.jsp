@@ -6,7 +6,8 @@
 	id="accordionSidebar">
 
 	<!-- Sidebar - Brand -->
-	<a class="sidebar-brand d-flex align-items-center justify-content-center"
+	<a
+		class="sidebar-brand d-flex align-items-center justify-content-center"
 		href="index.html">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
@@ -19,11 +20,10 @@
 	<hr class="sidebar-divider my-0">
 
 	<!-- Nav Item - Dashboard -->
-	<li class="nav-item">
-		<a class="nav-link" href="/namtvph13393/admin/product/home"> 
-			<i class="fas fa-fw fa-tachometer-alt"></i> <span>Trang chủ</span>
-		</a>
-	</li>
+	<li class="nav-item"><a class="nav-link"
+		href="/namtvph13393/admin/product/home"> <i
+			class="fas fa-fw fa-tachometer-alt"></i> <span>Trang chủ</span>
+	</a></li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider">
@@ -35,13 +35,12 @@
 		data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
 		aria-controls="collapseTwo"> <i class="fas fa-fw fa-folder"></i> <span>Account</span>
 	</a>
-		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" 
-		data-parent="#accordionSidebar">
+		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+			data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Function</h6>
-					<a class="collapse-item"
-					href="/namtvph13393/admin/accounts/index">index</a>
-				
+				<a class="collapse-item" href="/namtvph13393/admin/accounts/index">index</a>
+
 			</div>
 		</div></li>
 
@@ -51,16 +50,16 @@
 		aria-expanded="true" aria-controls="collapseUtilities"> <i
 			class="fas fa-fw fa-folder"></i> <span>Category</span>
 	</a>
-		<div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" 
-		data-parent="#accordionSidebar">
+		<div id="collapseUtilities" class="collapse show"
+			aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Function</h6>
-				<a class="collapse-item" href="/namtvph13393/admin/category/index">index</a> 
+				<a class="collapse-item" href="/namtvph13393/admin/category/index">index</a>
 			</div>
 		</div></li>
 
-<!-- Product -->
-	
+	<!-- Product -->
+
 	<li class="nav-item"><a class="nav-link collapsed" href="#"
 		data-toggle="collapse" data-target="#collapsePages"
 		aria-expanded="true" aria-controls="collapsePages"> <i
@@ -74,7 +73,20 @@
 			</div>
 		</div></li>
 
+	<!-- Oder -->
 
+	<li class="nav-item"><a class="nav-link collapsed" href="#"
+		data-toggle="collapse" data-target="#order"
+		aria-expanded="true" aria-controls="collapsePages"> <i
+			class="fas fa-fw fa-folder"></i> <span>Order</span>
+	</a>
+		<div id="order" class="collapse"
+			aria-labelledby="headingPages" data-parent="#accordionSidebar">
+			<div class="bg-white py-2 collapse-inner rounded">
+				<h6 class="collapse-header">Function</h6>
+				<a class="collapse-item" href="/namtvph13393/admin/product/index">Index</a>
+			</div>
+		</div></li>
 	<hr class="sidebar-divider d-none d-md-block">
 
 	<!-- Sidebar Toggler (Sidebar) -->

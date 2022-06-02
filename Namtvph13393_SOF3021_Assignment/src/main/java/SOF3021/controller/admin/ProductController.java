@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import SOF3021.beans.CategoryModel;
 import SOF3021.beans.ProductModel;
 import SOF3021.entities.Category;
 import SOF3021.entities.Product;
@@ -50,7 +51,9 @@ public class ProductController {
 	}
 	
 	@GetMapping("create")
-	public String create(@ModelAttribute("productModel") ProductModel productModel, Model model2) {
+	public String create(
+			@ModelAttribute("productModel") ProductModel productModel
+			, Model model2) {
 		List<Category> categories = this.categoryRepository.findAll();
 		model2.addAttribute("categorys", categories);
 		return "admin/product/create";
@@ -58,14 +61,12 @@ public class ProductController {
 
 	@PostMapping("store")
 	public String store(ProductModel productModel) {
-
 		try {
 			Product product = new Product();
 			product.setAvailable(productModel.getAvailable());
 			product.setCategory(productModel.getCategory());
 			Date dates = java.util.Calendar.getInstance().getTime();
 			product.setCreatedDate(dates);
-			System.out.println("date" + dates);
 			product.setImage(productModel.getImage());
 			product.setName(productModel.getName());
 			product.setPrice(productModel.getPrice());

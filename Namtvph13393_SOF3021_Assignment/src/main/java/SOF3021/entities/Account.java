@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
@@ -20,31 +22,35 @@ import lombok.Setter;
 
 @Data
 @Entity
-@Table(name="accounts")
+@Table(name = "accounts")
+@NamedQueries(
+@NamedQuery(	name = "Account.findByUsername",
+				query = "SELECT acc From Account acc where acc.username = :username"))
+
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 
-	@Column(name="username")
+	@Column(name = "username")
 	private String username;
 
-	@Column(name="password")
+	@Column(name = "password")
 	private String password;
 
-	@Column(name="fullname")
+	@Column(name = "fullname")
 	private String fullname;
 
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
 
-	@Column(name="photo")
+	@Column(name = "photo")
 	private String photo;
 
-	@Column(name="activated")
+	@Column(name = "activated")
 	private int activated;
 
-	@Column(name="admin")
+	@Column(name = "admin")
 	private int admin;
 }
