@@ -84,7 +84,7 @@
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<h6 class="collapse-header">Function</h6>
-				<a class="collapse-item" href="/namtvph13393/admin/product/index">Index</a>
+				<a class="collapse-item" href="/namtvph13393/admin/order/index">Index</a>
 			</div>
 		</div></li>
 	<hr class="sidebar-divider d-none d-md-block">

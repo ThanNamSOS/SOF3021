@@ -11,11 +11,11 @@
 	<form:form method="POST"
 		action="/namtvph13393/admin/category/store"
 		modelAttribute="category">
-		<div>
-			<label>Name</label>
-			<form:input path="name" />
+		<div class="mb-3 col-6">
+			<label for="exampleInputEmail1" class="form-label">Name</label>
+			<form:input type="text" class="form-control" path="name" />
 		</div>
-		<button>Save</button>
+		<button class="btn btn-dark">Save</button>
 	</form:form>
 </body>
 </html>

@@ -10,16 +10,16 @@
 <body>
 	<form:form method="POST" action="/namtvph13393/admin/product/store"
 		modelAttribute="productModel" >
-		<div>
-			<label>name</label>
-			<form:input path="name" />
+		<div class="mb-3 col-6">
+			<label for="exampleInputEmail1" class="form-label">Name</label>
+			<form:input type="text" class="form-control" path="name" />
 		</div>
-		<div>
-			<label>price</label>
-			<form:input path="price" type="bumber" />
+		<div class="mb-3 col-6">
+			<label for="exampleInputEmail1" class="form-label">price</label>
+			<form:input type="bumber" class="form-control" path="price" />
 		</div>
-
-		<div>
+		
+		<div class="mb-3 col-6">
 			<label>Category</label>
 			<form:select  path="category" id="selected_company">
 				<c:forEach items="${ categorys }" var="category">
@@ -27,16 +27,16 @@
 				</c:forEach>
 			</form:select>
 		</div>
-		<div>
-			<label>available</label>
-			<form:input path="available" />
+		<div class="mb-3 col-6">
+			<label for="exampleInputEmail1" class="form-label">available</label>
+			<form:input type="bumber" class="form-control" path="available" />
+		</div>
+		<div class="mb-3 col-6">
+			<label for="exampleInputEmail1" class="form-label">Photo</label>
+			<form:input type="file" class="form-control" path="image" />
 		</div>
 
-		<div>
-			<label>Photo</label>
-			<form:input type="file" path="image" />
-		</div>
-		<button>Save</button>
+		<button class="btn btn-dark">Save</button>
 	</form:form>
 </body>
 </html>

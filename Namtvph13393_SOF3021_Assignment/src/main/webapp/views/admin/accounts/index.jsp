@@ -35,7 +35,8 @@
 					<td>${acc.password }</td>
 					<td>${acc.fullname }</td>
 					<td>${acc.email }</td>
-					<td>${acc.photo }</td>
+					<td><img style="width: 100px" alt="" src="../../img/${acc.photo }"></td>
+					
 					<td>${acc.activated == 0 ? "In-active" : "active" }</td>
 					<td>${acc.admin == 1 ? "Admin" : "Member"}</td>
 					<td><a href="/namtvph13393/admin/accounts/edit/${acc.id }"

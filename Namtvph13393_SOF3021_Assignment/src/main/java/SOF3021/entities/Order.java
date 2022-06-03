@@ -30,7 +30,7 @@ public class Order {
 	@JoinColumn(name="user_id")
 	private Account user;
 	
-	@Column(name="created_date")
+	@Column(name="create_date")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date createdDate;

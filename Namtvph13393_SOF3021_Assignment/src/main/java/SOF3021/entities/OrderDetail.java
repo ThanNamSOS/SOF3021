@@ -9,11 +9,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="order_details")
+
+@NamedQueries(
+		@NamedQuery(name = "OrderDetail.findOrder",
+		query = "SELECT o.user, o.createdDate, o.address, od.product, od.price,od.quantity "
+				+ "FROM Order o "
+				+" JOIN OrderDetail od ON od.order = o.id ")
+		)
 public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +41,6 @@ public class OrderDetail {
 	@Column(name="price")
 	private double price;
 
-	@Column(name="quatity")
-	private int quatity;
+	@Column(name="quantity")
+	private int quantity;
 }

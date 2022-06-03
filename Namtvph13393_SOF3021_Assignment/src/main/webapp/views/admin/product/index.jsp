@@ -44,7 +44,9 @@
 					<td><a href="/namtvph13393/admin/product/edit/${product.id }"
 						class="btn btn-primary">Update</a> <a
 						href="/namtvph13393/admin/product/delete/${product.id }"
-						class="btn btn-danger">Delete</a></td>
+						class="btn btn-danger">Delete</a>
+						
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
