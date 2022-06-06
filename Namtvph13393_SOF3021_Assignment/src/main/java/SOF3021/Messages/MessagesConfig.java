@@ -10,7 +10,7 @@ public class MessagesConfig {
 	@Bean("messageSource")
 	public MessageSource getMessageSource() {
 		ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
-		ms.setBasenames("classpath:messages/student");
+		ms.setBasenames("classpath:messages/valid");
 		ms.setDefaultEncoding("utf-8");
 		return ms;
 	}

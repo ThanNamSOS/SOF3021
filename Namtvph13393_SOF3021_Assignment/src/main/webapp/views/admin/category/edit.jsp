@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>EDIT ACCOUNT</title>
 </head>
 <body>
 	<form:form method="POST"

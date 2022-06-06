@@ -34,6 +34,12 @@
 			value="/views/admin/order/index.jsp" />
 	</definition>
 
+	<definition name="admin/order/create"
+		extends="base.definition">
+		<put-attribute name="title" value="ORDER" />
+		<put-attribute name="body"
+			value="/views/admin/order/create.jsp" />
+	</definition>
 	<!-- home -->
 	<definition name="admin/pages/home"
 		extends="base.definition">
@@ -50,20 +56,18 @@
 		<put-attribute name="body"
 			value="/views/admin/accounts/index.jsp" />
 	</definition>
-	<definition name="admin/accounts/edit"
-		extends="base.definition">
-		<put-attribute name="title" value="Edit Account" />
-		<put-attribute name="body"
-			value="/views/admin/accounts/edit.jsp" />
-	</definition>
-
 	<definition name="admin/accounts/create"
 		extends="base.definition">
 		<put-attribute name="title" value="Create Account" />
 		<put-attribute name="body"
 			value="/views/admin/accounts/create.jsp" />
 	</definition>
-
+	<definition name="admin/accounts/edit/{*}"
+		extends="base.definition">
+		<put-attribute name="title" value="Edit Account" />
+		<put-attribute name="body"
+			value="/views/admin/accounts/edit.jsp" />
+	</definition>
 	<!--category -->
 
 	<definition name="admin/category/index"

@@ -3,12 +3,16 @@ package SOF3021.controller.admin;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
+import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +40,7 @@ public class CategoryController {
 
 	@GetMapping("index")
 	public String index(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "10") int size) {
+			@RequestParam(name = "size", defaultValue = "5") int size) {
 
 		Pageable pageable = PageRequest.of(page, size);
 		Page<Category> p = this.categoryRepository.findAll(pageable);
@@ -45,19 +49,30 @@ public class CategoryController {
 	}
 
 	@GetMapping("create")
-	public String create(@ModelAttribute("category") CategoryModel category) {
+	private String create(
+			@ModelAttribute("category") CategoryModel categoryModel
+			) {
 		return "admin/category/create";
 	}
-
+	
 	@PostMapping("store")
-	public String store(CategoryModel modelcate) {
-		Category cate = new Category();
-		cate.setId(modelcate.getId());
-		cate.setName(modelcate.getName());
-		this.categoryRepository.save(cate);
+	private String store(
+			@Valid
+			@ModelAttribute("category") CategoryModel categoryModel,
+			BindingResult result,
+			Model model2
+			) {
+		if (result.hasErrors() == true) {
+			model2.addAttribute("messages", "Dữ liệu trên Form Không hợp lệ");
+			return "admin/category/create";
+		} else {
+		Category category = new Category();
+		category.setName(categoryModel.getName());
+		this.categoryRepository.save(category);
 		return "redirect:/admin/category/index";
+		}
 	}
-
+	
 	@GetMapping("delete/{id}")
 	public String delete(@PathVariable("id") Category cate) {
 
@@ -68,7 +83,7 @@ public class CategoryController {
 	@GetMapping("edit/{id}")
 	public String edit(@PathVariable("id") Category cate, Model model) {
 		model.addAttribute("category", categoryRepository.findById(cate.getId()));
-		return "admin/category/edit";
+		return "admin/category/create";
 	}
 
 	@PostMapping("update")

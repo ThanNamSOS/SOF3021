@@ -4,12 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import SOF3021.beans.OrderAndOrderDetailModel;
 import SOF3021.entities.Account;
@@ -37,18 +41,31 @@ public class OrderController {
 	private ProductRepository productRepository;
 
 	@GetMapping("index")
-	public String index(Model model, @ModelAttribute("orderModel") OrderAndOrderDetailModel orderModel) {
-		List<Account> accounts = this.accountRepository.findAll();
-		List<Product> products = this.productRepository.findAll();
+	public String index(
+			Model model, 
+			@ModelAttribute("orderModel") OrderAndOrderDetailModel orderModel,
+			@RequestParam(name = "page",defaultValue = "0") int page,
+			@RequestParam(name = "size",defaultValue = "7") int size
+			) {
 		List<Object> listOrder = this.orderDetailRepository.getListOder();
-		model.addAttribute("accounts", accounts);
-		model.addAttribute("products", products);
 		model.addAttribute("listOrder", listOrder);
 		return "admin/order/index";
 	}
 
+	@GetMapping("create")
+	public String create(Model model, @ModelAttribute("orderModel") OrderAndOrderDetailModel orderModel) {
+		List<Account> accounts = this.accountRepository.findAll();
+		List<Product> products = this.productRepository.findAll();
+		model.addAttribute("accounts", accounts);
+		model.addAttribute("products", products);
+		return "admin/order/create";
+	}
+
 	@PostMapping("store")
-	public String store(OrderAndOrderDetailModel orderModel) {
+	public String store(@ModelAttribute("orderModel")OrderAndOrderDetailModel orderModel
+			
+			
+			) {
 		Order order = new Order();
 		order.setAddress(orderModel.getAddress());
 		Date dates = java.util.Calendar.getInstance().getTime();
