@@ -1,11 +1,7 @@
 package SOF3021.controller.admin;
 
-import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
 
-import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,12 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import SOF3021.beans.AccountModel;
 import SOF3021.beans.CategoryModel;
-import SOF3021.entities.Account;
 import SOF3021.entities.Category;
-import SOF3021.entities.Product;
-import SOF3021.repository.AccountRepository;
 import SOF3021.repository.CategoryRepository;
 import SOF3021.repository.ProductRepository;
 
@@ -83,7 +75,7 @@ public class CategoryController {
 	@GetMapping("edit/{id}")
 	public String edit(@PathVariable("id") Category cate, Model model) {
 		model.addAttribute("category", categoryRepository.findById(cate.getId()));
-		return "admin/category/create";
+		return "editCategory";
 	}
 
 	@PostMapping("update")

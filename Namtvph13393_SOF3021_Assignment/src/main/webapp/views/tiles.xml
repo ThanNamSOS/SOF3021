@@ -62,7 +62,7 @@
 		<put-attribute name="body"
 			value="/views/admin/accounts/create.jsp" />
 	</definition>
-	<definition name="admin/accounts/edit/{*}"
+	<definition name="admin/accounts/edit"
 		extends="base.definition">
 		<put-attribute name="title" value="Edit Account" />
 		<put-attribute name="body"
@@ -84,9 +84,9 @@
 			value="/views/admin/category/create.jsp" />
 	</definition>
 
-	<definition name="admin/category/edit/*"
+	<definition name="editCategory" 
 		extends="base.definition">
-		<put-attribute name="title" value="Edit Account" />
+		<put-attribute name="title" value="Edit Category" />
 		<put-attribute name="body"
 			value="/views/admin/category/edit.jsp" />
 	</definition>

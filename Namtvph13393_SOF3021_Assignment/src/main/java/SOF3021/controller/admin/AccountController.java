@@ -31,11 +31,13 @@ public class AccountController {
 
 	@GetMapping("create")
 	public String create(@ModelAttribute("account") AccountModel account) {
+		System.out.println("Hello Account create");
 		return "admin/accounts/create";
 	}
 
 	@PostMapping("store")
-	public String store(@Valid @ModelAttribute("account") AccountModel account, BindingResult result, Model model2) {
+	public String store(@Valid @ModelAttribute("account") AccountModel account, 
+			BindingResult result, Model model2) {
 		if (result.hasErrors() == true) {
 			model2.addAttribute("messages", "Dữ liệu trên Form Không hợp lệ");
 			return "admin/accounts/create";
@@ -71,7 +73,6 @@ public class AccountController {
 			return edit(account, model2);
 		} else {
 			Account account = new Account();
-
 			account.setId(model.getId());
 			account.setActivated(model.getActivated());
 			account.setAdmin(model.getAdmin());

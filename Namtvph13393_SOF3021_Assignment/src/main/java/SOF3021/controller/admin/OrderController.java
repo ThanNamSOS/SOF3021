@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,14 +64,18 @@ public class OrderController {
 
 	@PostMapping("store")
 	public String store(@ModelAttribute("orderModel")OrderAndOrderDetailModel orderModel
-			
-			
+			,BindingResult result, Model model2
 			) {
+		if (result.hasErrors() == true) {
+			model2.addAttribute("messages", "Dữ liệu trên Form Không hợp lệ");
+			return create(model2, orderModel);
+		}
+		System.out.println("address----"+orderModel.getAddress());
 		Order order = new Order();
 		order.setAddress(orderModel.getAddress());
 		Date dates = java.util.Calendar.getInstance().getTime();
 		order.setCreatedDate(dates);
-		order.setUser(orderModel.getUser());
+		order.setUser(orderModel.getAccount());
 		this.orderRepository.save(order);
 
 		OrderDetail detail = new OrderDetail();

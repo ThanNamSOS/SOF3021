@@ -61,6 +61,7 @@ public class ProductController {
 	public String create(@ModelAttribute("productModel") ProductModel productModel, Model model2) {
 		List<Category> categories = this.categoryRepository.findAll();
 		model2.addAttribute("categorys", categories);
+		System.out.println("Hello category create");
 		return "admin/product/create";
 	}
 

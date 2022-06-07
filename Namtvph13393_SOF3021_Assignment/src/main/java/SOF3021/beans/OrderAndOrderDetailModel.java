@@ -1,6 +1,7 @@
 package SOF3021.beans;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -20,10 +21,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderAndOrderDetailModel {
-
-	private Account user;
+		
+	@NotNull(message = "* Không để trống mục này")
+	private Account account;
 
 	private Date createdDate;
+	
 	@NotBlank(message = "* Không để chống mục này")
 	@Size(min = 6, max = 255, message = "* Giá trị từ 6 - 255 ký tự")
 	private String address;
