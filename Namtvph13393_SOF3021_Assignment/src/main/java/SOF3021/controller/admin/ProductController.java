@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.hibernate.Session;
-import org.hibernate.validator.internal.util.privilegedactions.GetMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,10 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import SOF3021.beans.AccountModel;
-import SOF3021.beans.CategoryModel;
 import SOF3021.beans.ProductModel;
-import SOF3021.entities.Account;
 import SOF3021.entities.Category;
 import SOF3021.entities.Product;
 import SOF3021.repository.CategoryRepository;
@@ -33,6 +28,9 @@ import SOF3021.repository.ProductRepository;
 @Controller
 @RequestMapping("/admin/product")
 public class ProductController {
+
+	private Product product;
+
 	@Autowired
 	private ProductRepository productRepository;
 
@@ -45,24 +43,16 @@ public class ProductController {
 		Pageable pageable = PageRequest.of(page, size);
 		Page<Product> p = this.productRepository.findAll(pageable);
 		model.addAttribute("products", p);
-		return "admin/product/index";
-	}
-
-	@GetMapping("home")
-	public String home(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "10") int size) {
-		Pageable pageable = PageRequest.of(page, size);
-		Page<Product> p = this.productRepository.findAll(pageable);
-		model.addAttribute("products", p);
-		return "admin/product/home";
+		model.addAttribute("view", "admin/product/index.jsp");
+		return "layouts/main";
 	}
 
 	@GetMapping("create")
 	public String create(@ModelAttribute("productModel") ProductModel productModel, Model model2) {
 		List<Category> categories = this.categoryRepository.findAll();
 		model2.addAttribute("categorys", categories);
-		System.out.println("Hello category create");
-		return "admin/product/create";
+		model2.addAttribute("view", "admin/product/create.jsp");
+		return "layouts/main";
 	}
 
 	@PostMapping("store")
@@ -95,17 +85,22 @@ public class ProductController {
 	}
 
 	@GetMapping("edit/{id}")
-	public String edit(@PathVariable("id") Product product, Model model) {
-		model.addAttribute("product", productRepository.findById(product.getId()));
+	public String edit(@PathVariable("id") Product pro, Model model) {
 		List<Category> categories = this.categoryRepository.findAll();
+		model.addAttribute("product", pro);
+		model.addAttribute("idProduct", pro.getId());
 		model.addAttribute("categorys", categories);
-		return "admin/product/edit";
+		model.addAttribute("view", "admin/product/edit.jsp");
+		return "layouts/main";
 	}
 
-	@PostMapping("update")
-	public String update(ProductModel productModel) {
-		Product product = new Product();
-		try {
+	@PostMapping("update/{id}")
+	public String update(ProductModel productModel, BindingResult result, Model model) {
+		if (result.hasErrors() == true) {
+			model.addAttribute("messages", "* Dữ liệu trên Form Không hợp lệ");
+			return edit(product, model);
+		} else {
+			Product product = new Product();
 			product.setId(productModel.getId());
 			product.setAvailable(productModel.getAvailable());
 			product.setCategory(productModel.getCategory());
@@ -116,11 +111,8 @@ public class ProductController {
 			product.setName(productModel.getName());
 			product.setPrice(productModel.getPrice());
 			this.productRepository.save(product);
-		} catch (Exception e) {
-			e.printStackTrace();
+			return "redirect:/admin/product/index";
 		}
-		this.productRepository.save(product);
-		return "redirect:/admin/product/index";
 	}
 
 }

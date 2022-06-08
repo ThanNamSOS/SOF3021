@@ -19,9 +19,10 @@ public class intorceptorConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// đăng ký Interceptors với spring
-		List<String> PathPatterns = new ArrayList();
+		List<String> PathPatterns = new ArrayList<String>();
 		PathPatterns.add("/admin/accounts/create");
 		PathPatterns.add("/admin/category/create");
+		PathPatterns.add("/admin/order/create");
 		registry.addInterceptor(loginIntorceptor)
 		.addPathPatterns(PathPatterns);
 	}

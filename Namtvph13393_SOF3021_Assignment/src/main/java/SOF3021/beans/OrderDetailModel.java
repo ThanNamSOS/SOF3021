@@ -27,13 +27,14 @@ public class OrderDetailModel {
 	private Order order;
 
 	private Product product;
+	
 	@NotNull(message = "* Không để trống")
 	@Min(value = 1, message = "Giá trị nhỏ nhất là 1")
-	@Pattern(regexp = ".*[^0-9].*",message = "* Gía trị phải là số")
 	private double price;
 
 	@NotNull(message = "* Không để trống")
 	@Min(value = 1, message = "Giá trị nhỏ nhất là 1")
-	@Pattern(regexp = ".*[^0-9].*",message = "* Gía trị phải là số")
-	private int quatity;
+	private int quantity;
+	
+	
 }

@@ -14,19 +14,20 @@ import SOF3021.entities.Product;
 import SOF3021.repository.ProductRepository;
 
 @Controller
-@RequestMapping("/pages")
+@RequestMapping("/")
 public class HomeController {
 	
 	@Autowired
 	private ProductRepository productRepository;
 	
 	@GetMapping("home")
-	public String index(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
+	public String home(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "10") int size) {
 		Pageable pageable = PageRequest.of(page, size);
 		Page<Product> p = this.productRepository.findAll(pageable);
 		model.addAttribute("products", p);
-		return "admin/pages/home";
+		model.addAttribute("view", "pages/home.jsp");
+		return "layouts/main";
 	}
 	
 }

@@ -34,6 +34,7 @@ public class AccountModel {
 	@NotBlank(message = "* Không để chống mục này")
 	@Size(min = 6, message = "* Độ dài từ 6 ký tự")
 	private String password;
+	
 	@NotBlank(message = "* Bạn chưa chọn hình ảnh")
 	private String photo;
 	

@@ -75,7 +75,7 @@
 				Logout
 			</a>
 			
-			<a class="dropdown-item" href="/namtvph13393/admin/accounts/formLogin" 
+			<a class="dropdown-item" href="${pageContext.request.contextPath}/login" 
 				> <i
 				class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 				Login

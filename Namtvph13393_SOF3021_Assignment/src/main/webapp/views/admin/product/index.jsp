@@ -38,15 +38,35 @@
 					<td>${product.createdDate }</td>
 					<td>${product.available }</td>
 					<td>${(product.category).name }</td>
-					<td >
-					<img style="width: 100px" alt="" src="../../img/${product.image }">
-					</td>
-					<td><a href="/namtvph13393/admin/product/edit/${product.id }"
-						class="btn btn-primary">Update</a> <a
-						href="/namtvph13393/admin/product/delete/${product.id }"
-						class="btn btn-danger">Delete</a>
-						
-					</td>
+					<td><img style="width: 100px" alt=""
+						src="../../img/${product.image }"></td>
+					<td><a type="button"
+						href="${pageContext.request.contextPath}/admin/product/edit/${product.id}"
+						class="btn btn-primary">Cập nhật </a>
+
+						<button type="button" class="btn btn-primary"
+							data-bs-toggle="modal"
+							data-bs-target="#exampleModal_${product.id}">Xóa</button> <!-- Modal delete-->
+						<div class="modal fade" id="exampleModal_${product.id}"
+							tabindex="-1" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">Xóa product: ${product.name} - id ${product.id}</div>
+									<div class="modal-footer">
+										<a type="button"
+											href="${pageContext.request.contextPath}/admin/product/delete/${product.id}"
+											class="btn btn-primary">Xóa</a> <a type="button"
+											class="btn btn-primary" data-bs-dismiss="modal">cancel</a>
+									</div>
+								</div>
+							</div>
+						</div></td>
 				</tr>
 			</c:forEach>
 		</tbody>

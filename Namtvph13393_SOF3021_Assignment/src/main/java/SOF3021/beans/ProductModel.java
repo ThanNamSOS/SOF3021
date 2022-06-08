@@ -26,8 +26,8 @@ import lombok.NoArgsConstructor;
 public class ProductModel {
 	
 	private int id;
-	@NotBlank(message = "* Không để chống mục này")
 	
+	@NotBlank(message = "* Không để chống mục này")
 	@Size(min = 1, max = 255, message = "* Giá trị từ 1 - 255 ký tự")
 	private String name;
 	

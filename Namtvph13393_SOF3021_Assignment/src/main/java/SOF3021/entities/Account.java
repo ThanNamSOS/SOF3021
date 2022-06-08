@@ -23,9 +23,11 @@ import lombok.Setter;
 @Data
 @Entity
 @Table(name = "accounts")
-@NamedQueries(
-@NamedQuery(	name = "Account.findByUsername",
-				query = "SELECT acc From Account acc where acc.username = :username"))
+@NamedQueries(value = {
+		@NamedQuery(name = "Account.findByUsername", query = "SELECT acc From Account acc where acc.username = :username"),
+		@NamedQuery(name = "Account.findByEmail", query = "SELECT acc From Account acc where acc.email = :email")
+
+})
 
 public class Account {
 	@Id

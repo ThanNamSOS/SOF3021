@@ -11,49 +11,23 @@
 	${messages }
 	<form:form method="POST" action="/namtvph13393/admin/order/store"
 		modelAttribute="orderModel" class="row">
-
 		<div class="col-5">
 			<div class="mb-3">
 				<label>User</label>
-				<form:select path="account" id="selected_company">
+				<form:select path="user" id="selected_company">
 					<c:forEach items="${ accounts }" var="account">
 						<form:option value="${ account }">${ account.fullname }</form:option>
 					</c:forEach>
 					${message }
-				<form:errors path="account" class="form-text text-danger" />
+				<form:errors path="user" class="form-text text-danger" />
 				</form:select>
 			</div>
 			<div class="mb-3">
 				<label for="exampleInputEmail1" class="form-label">address</label>
 				<form:input type="text" class="form-control" path="address" />
-				${message }
+				${message}
 				<form:errors path="address" class="form-text text-danger" />
 			</div>
-		</div>
-		<div class="col-7">
-			<div class="mb-3">
-				<label>Product</label>
-				<form:select path="product" id="selected_company">
-					<c:forEach items="${ products }" var="product">
-						<form:option value="${ product }">${ product.name }</form:option>
-					</c:forEach>
-					${message }
-				<form:errors path="product" class="form-text text-danger" />
-				</form:select>
-			</div>
-			<div class="mb-3">
-				<label for="exampleInputEmail1" class="form-label">price</label>
-				<form:input type="number" class="form-control" path="price" />
-				${message }
-				<form:errors path="price" class="form-text text-danger" />
-			</div>
-			<div class="mb-3">
-				<label for="exampleInputEmail1" class="form-label">quatity</label>
-				<form:input type="number" class="form-control" path="quatity" />
-				${message }
-				<form:errors path="quatity" class="form-text text-danger" />
-			</div>
-
 		</div>
 		<div class="col-12">
 			<button type="submit" class="btn btn-primary">Submit</button>

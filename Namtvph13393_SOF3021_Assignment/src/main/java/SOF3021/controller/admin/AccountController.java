@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import SOF3021.beans.AccountModel;
 import SOF3021.entities.Account;
 import SOF3021.repository.AccountRepository;
+import SOF3021.utils.EncryptUtil;
 
 @Controller
 @RequestMapping("/admin/accounts")
@@ -30,9 +31,9 @@ public class AccountController {
 	private AccountRepository accountRepository;
 
 	@GetMapping("create")
-	public String create(@ModelAttribute("account") AccountModel account) {
-		System.out.println("Hello Account create");
-		return "admin/accounts/create";
+	public String create(@ModelAttribute("account") AccountModel account, Model model) {
+		model.addAttribute("view", "admin/accounts/create.jsp");
+		return "layouts/main";
 	}
 
 	@PostMapping("store")
@@ -40,13 +41,15 @@ public class AccountController {
 			BindingResult result, Model model2) {
 		if (result.hasErrors() == true) {
 			model2.addAttribute("messages", "Dữ liệu trên Form Không hợp lệ");
-			return "admin/accounts/create";
+			model2.addAttribute("view", "admin/accounts/create.jsp");
+			return "layouts/main";
 		} else {
 			Account acc = new Account();
 			acc.setAdmin(account.getAdmin());
 			acc.setEmail(account.getEmail());
 			acc.setFullname(account.getFullname());
-			acc.setPassword(account.getPassword());
+			String encrypted = EncryptUtil.encrypt(account.getPassword());
+			acc.setPassword(encrypted);
 			acc.setPhoto(account.getPhoto());
 			acc.setUsername(account.getUsername());
 			this.accountRepository.save(acc);
@@ -61,12 +64,15 @@ public class AccountController {
 	}
 
 	@GetMapping("edit/{id}")
-	public String edit(@PathVariable("id") Account account, Model model) {
-		model.addAttribute("account", accountRepository.findById(account.getId()));
-		return "admin/accounts/edit";
+	public String edit(
+			@PathVariable("id") Account account, Model model) {
+		model.addAttribute("account", account);
+		model.addAttribute("idAccount", account.getId());
+		model.addAttribute("view", "admin/accounts/edit.jsp");
+		return "layouts/main";
 	}
 
-	@PostMapping("update")
+	@PostMapping("update/{id}")
 	public String update(AccountModel model, BindingResult result, Model model2) {
 		if (result.hasErrors() == true) {
 			model2.addAttribute("messages", "* Dữ liệu trên Form Không hợp lệ");
@@ -93,26 +99,8 @@ public class AccountController {
 		Pageable pageable = PageRequest.of(page, size);
 		Page<Account> p = this.accountRepository.findAll(pageable);
 		model.addAttribute("data", p);
-		return "admin/accounts/index";
-	}
-
-	@GetMapping("formLogin")
-	public String form(@ModelAttribute("account") AccountModel account) {
-		return "admin/accounts/login";
-	}
-
-	@PostMapping("login")
-	public String login(AccountModel account, Model model) {
-		String username = account.getUsername();
-		String pass = account.getPassword();
-		Account acc = this.accountRepository.findByUsername(username);
-		System.out.println(acc.getUsername() + acc.getPassword());
-		if (pass.equalsIgnoreCase(acc.getPassword())) {
-			return "redirect:/admin/accounts/index";
-		} else {
-			model.addAttribute("message", "mật khẩu sai");
-			return "admin/accounts/formLogin";
-		}
+		model.addAttribute("view", "admin/accounts/index.jsp");
+		return "layouts/main";
 	}
 
 }
