@@ -33,7 +33,7 @@
 						href="${pageContext.request.contextPath}/admin/orderDetail/edit/${orderDetai.id}"
 						class="btn btn-primary">Cập nhật </a>
 					
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-danger"
 							data-bs-toggle="modal" data-bs-target="#exampleModal_${orderDetai.id}">
 							Xóa</button> <!-- Modal delete-->
 						<div class="modal fade" id="exampleModal_${orderDetai.id}" tabindex="-1"

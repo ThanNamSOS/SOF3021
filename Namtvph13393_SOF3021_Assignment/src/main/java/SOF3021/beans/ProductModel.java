@@ -36,7 +36,6 @@ public class ProductModel {
 	
 	@NotNull(message = "* Không để chống mục này")
 	@Min(value = 1, message = "* Giá trị nhỏ nhất là 1")
-	@Max(value = 200, message = "* Giá trị lớn nhất là 200")
 	@NumberFormat(style = Style.NUMBER)
 	private double price;
 

@@ -8,25 +8,26 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import SOF3021.intorceptor.AdminInerceptor;
+import SOF3021.intorceptor.AuthenticateInterceptor;
 import SOF3021.intorceptor.LoginIntorceptor;
 
 @Configuration
 public class intorceptorConfiguration implements WebMvcConfigurer {
-	
+
 	@Autowired
-	private LoginIntorceptor loginIntorceptor;
-	
+	private AuthenticateInterceptor authenticateInterceptor;
+
+	@Autowired
+	private AdminInerceptor adminInterceptor;
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		// đăng ký Interceptors với spring
-		List<String> PathPatterns = new ArrayList<String>();
-		PathPatterns.add("/admin/accounts/create");
-		PathPatterns.add("/admin/category/create");
-		PathPatterns.add("/admin/order/create");
-		registry.addInterceptor(loginIntorceptor)
-		.addPathPatterns(PathPatterns);
+		registry.addInterceptor(authenticateInterceptor)
+		.addPathPatterns("/admin/**");
+
+		registry.addInterceptor(adminInterceptor)
+		.addPathPatterns("/admin/**");
 	}
-	
-	
-	
+
 }

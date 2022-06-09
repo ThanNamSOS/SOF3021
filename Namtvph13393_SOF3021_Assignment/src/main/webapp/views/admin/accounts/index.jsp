@@ -41,7 +41,7 @@
 						href="${pageContext.request.contextPath}/admin/accounts/edit/${acc.id}"
 						class="btn btn-primary">Cập nhật </a>
 					
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-danger"
 							data-bs-toggle="modal" data-bs-target="#exampleModal_${acc.id}">
 							Xóa</button> <!-- Modal delete-->
 						<div class="modal fade" id="exampleModal_${acc.id}" tabindex="-1"

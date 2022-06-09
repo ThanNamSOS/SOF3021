@@ -37,11 +37,10 @@ public class LoginController {
 			) {
 		String email = account.getEmail();
 		String pass = account.getPassword();
-		
 		Account acc = this.accountRepository.findByEmail(email);
 		if (acc != null) {
 			if (EncryptUtil.check(pass, acc.getPassword())) {
-				session.setAttribute("accLogin", acc);
+				session.setAttribute("acc", acc);
 				return "redirect:/home";
 			} else {
 				model.addAttribute("messages", "mật khẩu sai");

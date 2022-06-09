@@ -8,26 +8,28 @@
 <meta charset="ISO-8859-1">
 </head>
 <body>
-	<p class="alert alert warning">${ messages }</p>
-	<form:form method="POST"
-		action="${pageContext.request.contextPath}/loginForm"
-		modelAttribute="account">
-		<div class="form-outline mb-4">
-			<label for="exampleInputEmail1" class="form-label">Email</label>
-			<form:input type="text" class="form-control" path="email" />
-			${message }
-			<form:errors path="email" class="form-text text-danger" />
-		</div>
+	<div class="col-3">
+		<p class="alert alert warning">${ messages }</p>
+		<form:form method="POST"
+			action="${pageContext.request.contextPath}/loginForm"
+			modelAttribute="account">
+			<div class="form-outline mb-4 ">
+				<label for="exampleInputEmail1" class="form-label">Email</label>
+				<form:input type="text" class="form-control" path="email" />
+				${message }
+				<form:errors path="email" class="form-text text-danger" />
+			</div>
 
-		<!-- Password input -->
-		<div class="form-outline mb-4">
-			<label for="exampleInputEmail1" class="form-label">Password</label>
-			<form:input type="password" class="form-control" path="password" />
-			${message }
-			<form:errors path="password" class="form-text text-danger" />
-		</div>
+			<!-- Password input -->
+			<div class="form-outline mb-4">
+				<label for="exampleInputEmail1" class="form-label">Password</label>
+				<form:input type="password" class="form-control" path="password" />
+				${message }
+				<form:errors path="password" class="form-text text-danger" />
+			</div>
 
-		<button class="btn btn-primary">Sign in</button>
-	</form:form>
+			<button class="btn btn-primary">Sign in</button>
+		</form:form>
+	</div>
 </body>
 </html>

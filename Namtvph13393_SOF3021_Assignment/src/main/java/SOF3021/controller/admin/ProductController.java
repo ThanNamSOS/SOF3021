@@ -95,10 +95,15 @@ public class ProductController {
 	}
 
 	@PostMapping("update/{id}")
-	public String update(ProductModel productModel, BindingResult result, Model model) {
+	public String update(@Valid @ModelAttribute("product") ProductModel productModel, BindingResult result, Model model) {
 		if (result.hasErrors() == true) {
 			model.addAttribute("messages", "* Dữ liệu trên Form Không hợp lệ");
-			return edit(product, model);
+			List<Category> categories = this.categoryRepository.findAll();
+			model.addAttribute("product", productModel);
+			model.addAttribute("idProduct", productModel.getId());
+			model.addAttribute("categorys", categories);
+			model.addAttribute("view", "admin/product/edit.jsp");
+			return "layouts/main";
 		} else {
 			Product product = new Product();
 			product.setId(productModel.getId());

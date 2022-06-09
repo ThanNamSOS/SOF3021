@@ -21,7 +21,6 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th scope="col">id</th>
 				<th scope="col">name</th>
 				<th colspan="2"></th>
 			</tr>
@@ -29,13 +28,12 @@
 		<tbody>
 			<c:forEach items="${categorys.content}" var="cate">
 				<tr>
-					<td>${cate.id }</td>
 					<td>${cate.name }</td>
 					<td><a type="button"
 						href="${pageContext.request.contextPath}/admin/category/edit/${cate.id}"
 						class="btn btn-primary">Cập nhật </a>
 					
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-danger"
 							data-bs-toggle="modal" data-bs-target="#exampleModal_${cate.id}">
 							Xóa</button> <!-- Modal delete-->
 						<div class="modal fade" id="exampleModal_${cate.id}" tabindex="-1"

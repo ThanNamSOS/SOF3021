@@ -1,6 +1,6 @@
-
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!-- Sidebar Toggle (Topbar) -->
 <button id="sidebarToggleTop"
 	class="btn btn-link d-md-none rounded-circle mr-3">
@@ -23,14 +23,21 @@
 </form>
 
 <!-- Topbar Navbar -->
+<!-- cart-->
+<c:if test="${ acc.admin == 0 }">
+<button type="button" class="btn btn-dark">Giỏ hàng</button>
+</c:if>
 <ul class="navbar-nav ml-auto">
 
 	<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+
 	<li class="nav-item dropdown no-arrow d-sm-none"><a
 		class="nav-link dropdown-toggle" href="#" id="searchDropdown"
 		role="button" data-toggle="dropdown" aria-haspopup="true"
-		aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+		aria-expanded="false"> <i class="fas fa-search fa-fw"> </i>
 	</a> <!-- Dropdown - Messages -->
+
+
 		<div
 			class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
 			aria-labelledby="searchDropdown">
@@ -54,9 +61,11 @@
 		class="nav-link dropdown-toggle" href="#" id="userDropdown"
 		role="button" data-toggle="dropdown" aria-haspopup="true"
 		aria-expanded="false"> <span
-			class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas
-				McGee</span> <img class="img-profile rounded-circle"
-			src="img/undraw_profile.svg">
+			class="mr-2 d-none d-lg-inline text-gray-600 small"> <c:if
+					test="${ not empty acc }">
+					${  acc.fullname }
+				</c:if>
+		</span> <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
 	</a> <!-- Dropdown - User Information -->
 		<div
 			class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -69,17 +78,44 @@
 				class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
 			</a>
 			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="#" data-toggle="modal"
-				data-target="#logoutModal"> <i
-				class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-				Logout
-			</a>
-			
-			<a class="dropdown-item" href="${pageContext.request.contextPath}/login" 
-				> <i
-				class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-				Login
-			</a>
+			<c:if test="${ not empty acc }">
+				<a class="dropdown-item" data-toggle="modal"
+					data-target="#logoutModal"> <i
+					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+					Logout
+				</a>
+			</c:if>
+			<c:if test="${ empty acc }">
+				<a class="dropdown-item"
+					href="${pageContext.request.contextPath}/login"> <i
+					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+					Login
+				</a>
+			</c:if>
 		</div></li>
 
 </ul>
+
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+				<button class="close" type="button" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">Chọn "Đăng xuất" bên dưới nếu bạn đã
+				sẵn sàng để kết thúc phiên hiện tại của bạn.</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<a class="btn btn-primary"
+					href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+			</div>
+		</div>
+	</div>
+</div>

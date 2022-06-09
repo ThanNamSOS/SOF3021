@@ -81,10 +81,13 @@ public class CategoryController {
 	}
 
 	@PostMapping("update/{id}")
-	public String update(CategoryModel categoryModel, BindingResult result, Model model) {
+	public String update(@Valid @ModelAttribute("category") CategoryModel categoryModel, BindingResult result, Model model) {
 		if (result.hasErrors() == true) {
 			model.addAttribute("messages", "* Dữ liệu trên Form Không hợp lệ");
-			return edit(category, model);
+			model.addAttribute("category", categoryModel);
+			model.addAttribute("idcategory", categoryModel.getId());
+			model.addAttribute("view", "admin/category/edit.jsp");
+			return "layouts/main";
 		} else {
 			Category cate = new Category();
 			cate.setId(categoryModel.getId());

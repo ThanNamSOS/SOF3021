@@ -44,7 +44,7 @@
 						href="${pageContext.request.contextPath}/admin/product/edit/${product.id}"
 						class="btn btn-primary">Cập nhật </a>
 
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-danger"
 							data-bs-toggle="modal"
 							data-bs-target="#exampleModal_${product.id}">Xóa</button> <!-- Modal delete-->
 						<div class="modal fade" id="exampleModal_${product.id}"

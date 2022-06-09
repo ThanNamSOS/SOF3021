@@ -73,10 +73,14 @@ public class AccountController {
 	}
 
 	@PostMapping("update/{id}")
-	public String update(AccountModel model, BindingResult result, Model model2) {
+	public String update(@Valid @ModelAttribute("account") AccountModel model, BindingResult result, Model model2) {
 		if (result.hasErrors() == true) {
 			model2.addAttribute("messages", "* Dữ liệu trên Form Không hợp lệ");
-			return edit(account, model2);
+			model2.addAttribute("view", "admin/accounts/edit.jsp");
+			model2.addAttribute("account", model);
+			model2.addAttribute("idAccount", model.getId());
+			return "layouts/main";
+			//return edit(account, model2);
 		} else {
 			Account account = new Account();
 			account.setId(model.getId());
