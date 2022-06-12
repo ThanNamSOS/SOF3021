@@ -57,11 +57,8 @@
 			<version>8.0.29</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
-			<!--<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-jsp</artifactId>
-			<version>3.0.8</version>
-		</dependency> -->
+		<!--<dependency> <groupId>org.apache.tiles</groupId> <artifactId>tiles-jsp</artifactId> 
+			<version>3.0.8</version> </dependency> -->
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -79,7 +76,17 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.librepdf</groupId>
+			<artifactId>openpdf</artifactId>
+			<version>1.3.8</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

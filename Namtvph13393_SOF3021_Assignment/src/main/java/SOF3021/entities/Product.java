@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -20,6 +22,10 @@ import lombok.Data;
 @Entity
 @Table(name="products")
 @Data
+@NamedQueries(value = {
+@NamedQuery(name = "Product.SearchProduct", 
+			query = "SELECT pro From Product pro where pro.name = :name or pro.category = :category"),
+})
 public class Product {
 	@Id
 	@Column(name="id")

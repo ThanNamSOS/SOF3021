@@ -39,7 +39,7 @@
 					<td>${product.available }</td>
 					<td>${(product.category).name }</td>
 					<td><img style="width: 100px" alt=""
-						src="../../img/${product.image }"></td>
+						src="${pageContext.request.contextPath}/img/${product.image }"></td>
 					<td><a type="button"
 						href="${pageContext.request.contextPath}/admin/product/edit/${product.id}"
 						class="btn btn-primary">Cập nhật </a>

@@ -1,7 +1,12 @@
 package SOF3021.controller.admin;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.lowagie.text.DocumentException;
+
 import SOF3021.beans.OrderAndOrderDetailModel;
 import SOF3021.beans.OrderDetailModel;
 import SOF3021.beans.OrderModel;
+import SOF3021.beans.OrderPDFExporter;
 import SOF3021.entities.Account;
 import SOF3021.entities.Order;
 import SOF3021.entities.OrderDetail;
@@ -118,5 +126,24 @@ public class OrderDetailController {
 			return "redirect:/admin/orderDetail/index";
 		}
 	}
+	
+	@GetMapping("export/pdf")
+    public void exportToPDF(HttpServletResponse response) 
+    		throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+         
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+         
+        List<OrderDetail> listUsers = this.orderDetailRepository.findAll();
+         
+        OrderPDFExporter exporter = new OrderPDFExporter(listUsers);
+        exporter.export(response);
+         
+    }
+	
 	
 }

@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 
 public class OrderModel {
 	private int id;
-
 	private Account user;
 
 	private Date createdDate;

@@ -15,7 +15,7 @@
 	</c:if>
 
 	<div class="row">
-		<c:forEach items="${products.content}" var="product">
+		<c:forEach items="${products}" var="product">
 			<div class="card col-3" style="width: 18rem;">
 				<img src="${pageContext.request.contextPath}/img/${product.image}"
 					class="card-img-top">
@@ -37,15 +37,5 @@
 			</div>
 		</c:forEach>
 	</div>
-	<nav aria-label="Page navigation example" class="m-20">
-		<ul class="pagination justify-content-center">
-
-			<c:forEach var="index" begin="0" end="${ products.totalPages - 1 }">
-				<li class="page-item"><a class="page-link"
-					href="/namtvph13393/home?page=${index}"> ${ index + 1 }</a></li>
-			</c:forEach>
-
-		</ul>
-	</nav>
 </body>
 </html>

@@ -24,14 +24,14 @@
 	<div id="wrapper">
 		<!-- Sidebar -->
 
-		<c:if test="${ acc.admin == 1 }">
+		
 			<ul
 				class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 				id="accordionSidebar">
 				<jsp:include page="/views/basefragments/sidebar.jsp"></jsp:include>
 
 			</ul>
-		</c:if>
+		
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
