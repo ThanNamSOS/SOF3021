@@ -8,26 +8,6 @@
 	<i class="fa fa-bars"></i>
 </button>
 
-<!-- Topbar Search -->
-<form:form method="GET"
-	action="${pageContext.request.contextPath}/search"
-	modelAttribute="product"
-	class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-
-	<div class="input-group">
-		<form:select path="category">
-			<c:forEach items="${ categorys }" var="category">
-				<form:option value="${ category }">${ category.name }</form:option>
-			</c:forEach>
-		</form:select>
-		<form:input path="name" type="text"
-			class="form-control bg-light border-0 small"
-			placeholder="Tìm kiếm sản phẩm ..." aria-label="Search"
-			aria-describedby="basic-addon2" />
-		<button class="btn btn-dark"><i class="fas fa-search fa-sm"></i>Tim kiem</button>
-	</div>
-</form:form>
-
 <!-- Topbar Navbar -->
 
 <ul class="navbar-nav ml-auto">

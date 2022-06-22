@@ -10,9 +10,8 @@
 <body>
 	<!-- Outer Row -->
 	<div class="row justify-content-center">
-		
 		<div class="col-xl-10 col-lg-12 col-md-9">
-<div class="alert alert-danger" role="alert">${ messages }</div>
+			<div class="alert alert-danger" role="alert">${ messages }</div>
 			<div class="card o-hidden border-0 shadow-lg my-5">
 				<div class="card-body p-0">
 					<!-- Nested Row within Card Body -->
@@ -28,15 +27,16 @@
 									modelAttribute="account">
 									<div class="form-group">
 										<label for="exampleInputEmail1" class="form-label">Email</label>
-										<form:input type="text" class="form-control form-control-user" path="email" />
+										<form:input type="text" class="form-control form-control-user"
+											path="email" />
 										${message }
 										<form:errors path="email" class="form-text text-danger" />
 									</div>
 									<!-- Password input -->
 									<div class="form-group">
 										<label for="exampleInputEmail1" class="form-label">Password</label>
-										<form:input type="password" class="form-control form-control-user"
-											path="password" />
+										<form:input type="password"
+											class="form-control form-control-user" path="password" />
 										${message }
 										<form:errors path="password" class="form-text text-danger" />
 									</div>

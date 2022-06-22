@@ -31,7 +31,7 @@ public class CartController {
 	@GetMapping(value = "cart/{product}")
 	public String addToCart(
 			@ModelAttribute(name = "order") Order order ,
-			Model model, 
+			Model model,
 			@PathVariable("product") Product params, 
 			HttpSession session) {
 		Map<Integer, OrderDetail> cart = (HashMap<Integer, OrderDetail>) session.getAttribute("cart");
@@ -54,8 +54,9 @@ public class CartController {
 	}
 
 	@GetMapping("cartMe")
-	public String goCart(Model model,HttpSession session) {
+	public String goCart(@ModelAttribute("order") Order order, Model model,HttpSession session) {
 		model.addAttribute("view", "user/cart/index.jsp");
+		model.addAttribute("order", order);
 		return "layouts/main";
 	}
 

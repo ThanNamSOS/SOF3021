@@ -14,5 +14,4 @@ public class MessagesConfig {
 		ms.setDefaultEncoding("utf-8");
 		return ms;
 	}
-
 }

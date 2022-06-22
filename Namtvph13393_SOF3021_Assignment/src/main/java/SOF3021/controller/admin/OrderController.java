@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,14 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import SOF3021.beans.CategoryModel;
 import SOF3021.beans.OrderAndOrderDetailModel;
 import SOF3021.beans.OrderModel;
 import SOF3021.entities.Account;
-import SOF3021.entities.Category;
 import SOF3021.entities.Order;
 import SOF3021.repository.AccountRepository;
 import SOF3021.repository.OrderRepository;
@@ -106,4 +107,5 @@ public class OrderController {
 			return "redirect:/admin/order/index";
 		}
 	}
+	
 }
