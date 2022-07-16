@@ -48,7 +48,8 @@ public class ProductController {
 	}
 
 	@GetMapping("create")
-	public String create(@ModelAttribute("productModel") ProductModel productModel, Model model2) {
+	public String create(@ModelAttribute("productModel") ProductModel productModel, 
+			Model model2) {
 		List<Category> categories = this.categoryRepository.findAll();
 		model2.addAttribute("categorys", categories);
 		model2.addAttribute("view", "admin/product/create.jsp");
@@ -56,7 +57,8 @@ public class ProductController {
 	}
 
 	@PostMapping("store")
-	public String store(@Valid @ModelAttribute("productModel") ProductModel productModel, BindingResult result,
+	public String store(@Valid @ModelAttribute("productModel") ProductModel productModel,
+			BindingResult result,
 			Model model2) {
 		List<Category> categories = this.categoryRepository.findAll();
 		model2.addAttribute("categorys", categories);
@@ -95,7 +97,8 @@ public class ProductController {
 	}
 
 	@PostMapping("update/{id}")
-	public String update(@Valid @ModelAttribute("product") ProductModel productModel, BindingResult result, Model model) {
+	public String update(@Valid @ModelAttribute("product") ProductModel productModel, BindingResult result,
+			Model model) {
 		if (result.hasErrors() == true) {
 			model.addAttribute("messages", "* Dữ liệu trên Form Không hợp lệ");
 			List<Category> categories = this.categoryRepository.findAll();
@@ -119,5 +122,5 @@ public class ProductController {
 			return "redirect:/admin/product/index";
 		}
 	}
-	
+
 }

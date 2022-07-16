@@ -30,6 +30,7 @@ import lombok.Setter;
 })
 
 public class Account {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")

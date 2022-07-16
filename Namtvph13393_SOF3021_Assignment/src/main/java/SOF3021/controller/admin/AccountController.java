@@ -97,7 +97,8 @@ public class AccountController {
 	}
 
 	@GetMapping("index")
-	public String index(Model model, @RequestParam(name = "page", defaultValue = "0") int page,
+	public String index(Model model, 
+			@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
 
 		Pageable pageable = PageRequest.of(page, size);

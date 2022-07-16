@@ -81,7 +81,8 @@ public class CategoryController {
 	}
 
 	@PostMapping("update/{id}")
-	public String update(@Valid @ModelAttribute("category") CategoryModel categoryModel, BindingResult result, Model model) {
+	public String update(@Valid @ModelAttribute("category") CategoryModel categoryModel,
+			BindingResult result, Model model) {
 		if (result.hasErrors() == true) {
 			model.addAttribute("messages", "* Dữ liệu trên Form Không hợp lệ");
 			model.addAttribute("category", categoryModel);

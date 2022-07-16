@@ -12,6 +12,7 @@
 		role="button">Xuất PDF</a>
 	<a href="${pageContext.request.contextPath}/admin/orderDetail/create" class="btn btn-dark btn-lg"
 		role="button">CREATE</a>
+		
 	<table class="table" class="row">
 		<thead>
 			<tr>

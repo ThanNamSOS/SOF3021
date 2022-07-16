@@ -20,7 +20,7 @@ import lombok.Data;
 
 @NamedQueries(
 		@NamedQuery(name = "OrderDetail.findOrder",
-		query = "SELECT o.user, o.createdDate, o.address, od.product, od.price,od.quantity "
+		query = "SELECT o.user, o.createdDate, o.address, od.product, od.price, od.quantity "
 				+ "FROM Order o "
 				+" JOIN OrderDetail od ON od.order = o.id ")
 		)

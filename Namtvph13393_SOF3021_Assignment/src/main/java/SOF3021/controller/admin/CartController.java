@@ -43,10 +43,10 @@ public class CartController {
 			OrderDetail od = cart.get(product.getId());
 			od.setQuantity(od.getQuantity() + 1);
 		} else {
-			OrderDetail o = new OrderDetail();
-			o.setProduct(product);
-			o.setQuantity(1);
-			cart.put(product.getId(), o);
+			OrderDetail od = new OrderDetail();
+			od.setProduct(product);
+			od.setQuantity(1);
+			cart.put(product.getId(), od);
 		}
 		session.setAttribute("cart", cart);
 		model.addAttribute("view", "user/cart/index.jsp");

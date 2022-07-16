@@ -63,7 +63,8 @@ public class OrderDetailController {
 	}
 
 	@GetMapping("create")
-	public String create(Model model, @ModelAttribute("detailModel") OrderDetailModel detailModel) {
+	public String create(Model model, 
+			@ModelAttribute("detailModel") OrderDetailModel detailModel) {
 		List<Order> orders = this.orderRepository.findAll();
 		List<Product> products = this.productRepository.findAll();
 		model.addAttribute("orders", orders);
